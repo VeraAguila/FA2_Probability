@@ -1,0 +1,117 @@
+---
+title: "Formative Assessnent 2"
+author: "Vera Aguila"
+date: "2024-02-18"
+output: html_document
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Probablity of getting 50%
+
+1. Use R to illustrate that the probability of getting:
+  + a head is 0.5 if a fair coin is tossed repeatedly;
+    
+Let's say that the coin will be tossed 100 times. So, freq is equal to 100.
+```{r coin1}
+freq <- 100
+coin_toss <- sample (c("H","T"), freq, replace = T)
+coin_toss
+```
+The table shows the results of tossed coin 100 times.
+
+```{r coin2}
+table(coin_toss)/freq
+```
+The table shows the percentage of getting head and tail. We can see that the results are near 0.5 or 50%. Now, let's try again and make the freq bigger.
+
+The probability of getting head or tail with 5,000 toss:
+```{r coin3, echo=FALSE}
+freq <- 5000
+coin_toss <- sample (c("H","T"), freq, replace = T)
+```
+```{r coin4, }
+table(coin_toss)/freq
+```
+We can see at the table that the probability of getting head are getting nearer to 0.5.We can conclude that if a fair coin is tossed repeatedly, the probability of getting a head is 0.5.
+
+
+
+
+<br><br>
+  + a red card is 0.5 if cards are drawn repeatedly with replacement from a well-shuffled deck;
+  
+  ```{r card}
+cards <- rep(c("red", "black"), times = c(26, 26))
+freq <- 100000
+drawn <- sample(cards, size = freq, replace = T)
+get_red <- sum(drawn == "red") / freq
+print(paste("Probability of getting a red card:", get_red))
+```
+<br><br>
+  + an even number is 0.5 if a fair die is rolled repeatedly.
+
+  ```{r die}
+die <- rep(c("odd", "even"), times = c(3,3))
+freq <- 100000
+rolled <- sample(die, size = freq, replace = T)
+get_even <- sum(rolled == "even") / freq
+print(paste("Probability of getting an even number:", get_even))
+```
+
+******
+
+## Rolling a die 
+
+3. An experiment consists of rolling a die. Use R to simulate this experiment 600 times and obtain the relative frequency of each possible outcome. Hence, estimate the probability of getting each of 1, 2, 3, 4, 5, and 6.
+
+```{r rdie}
+freq <- 600
+x <- sample (c(1,2,3,4,5,6), freq, replace = TRUE)
+x
+```
+<br>
+Probability of getting one:
+```{r rdie2}
+get_one <- sum(x==1)/freq
+print(paste("Probability of getting one:", get_one))
+```
+<br>
+Probability of getting two:
+```{r rdie3}
+get_two <- sum(x==2)/freq
+print(paste("Probability of getting one:", get_two))
+```
+<br>
+Probability of getting three:
+```{r rdie4}
+get_three <- sum(x==3)/freq
+print(paste("Probability of getting three:", get_three))
+```
+<br>
+Probability of getting four:
+```{r rdie5}
+get_four <- sum(x==4)/freq
+print(paste("Probability of getting four:", get_four))
+```
+<br>
+Probability of getting five:
+```{r rdie6}
+get_five <- sum(x==5)/freq
+print(paste("Probability of getting five:", get_five))
+```
+<br>
+Probability of getting six:
+```{r rdie7}
+get_six <- sum(x==6)/freq
+print(paste("Probability of getting six:", get_six))
+```
+<br><br>
+Let's see if it equals to 1
+```{r rdie8}
+total<- get_one + get_two +get_three + get_four + get_five + get_six
+print(paste("The total is", total))
+```
